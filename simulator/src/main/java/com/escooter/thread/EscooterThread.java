@@ -19,7 +19,7 @@ public class EscooterThread implements Runnable{
     @Override
     public void run() {
         while (running) {
-            System.out.println("thread");
+            updateEscooterStatus();
             updateBatteryLevels();
             sleepForInterval(1000);
         }
@@ -29,9 +29,23 @@ public class EscooterThread implements Runnable{
         running = false;
     }
 
+    private void updateEscooterStatus() {
+        synchronized (escooters) {
+            for (Escooter escooter : escooters) {
+                String newStatus = escooterRepository.getStatus(escooter.getId());
+                escooter.setStatus(newStatus);
+            }
+        }
+    }
+
     private void updateBatteryLevels() {
         synchronized (escooters) {
             for (Escooter escooter : escooters) {
+                if(!"Rented".equals(escooter.getStatus())){
+                    escooterRepository.updateBatteryLevel(escooter.getId(), escooter.getBatteryLevel());
+                    continue;
+                }
+
                 int newBatteryLevel = simulateBatteryLevel(escooter.getBatteryLevel());
                 escooter.setBatteryLevel(newBatteryLevel);
                 escooterRepository.updateBatteryLevel(escooter.getId(), newBatteryLevel);

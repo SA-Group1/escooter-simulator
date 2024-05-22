@@ -2,6 +2,7 @@ package com.escooter.model;
 
 public class Escooter {
     private String id;
+    private String status;
     private int batteryLevel;
     private double lat;
     private double lon;
@@ -17,6 +18,14 @@ public class Escooter {
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    public String getStatus(){
+        return status;
+    }
+
+    public void setStatus(String status){
+        this.status = status;
     }
 
     public int getBatteryLevel() {

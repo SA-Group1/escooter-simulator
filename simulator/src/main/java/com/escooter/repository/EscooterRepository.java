@@ -3,8 +3,8 @@ package com.escooter.repository;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.escooter.dto.DefaultResponse;
 import com.escooter.dto.EscooterId;
-import com.escooter.dto.GetEscoooterIdListResponse;
 import com.escooter.dto.UpdateBatteryLevelResponse;
 import com.escooter.model.Escooter;
 import com.escooter.network.HttpRequest;
@@ -25,6 +25,20 @@ public class EscooterRepository {
         return null;
     }
 
+    public String getStatus(String escooterId){
+        String jsonInputString = String.format("{\"escooterId\": \"%s\"}", escooterId);
+        try {
+            String response = httpRequest.sendHttpRequest(BASE_API_URL + "getStatus", "POST", jsonInputString);
+            if (response != null) {
+                DefaultResponse defaultResponse = gson.fromJson(response, DefaultResponse.class);
+                return defaultResponse.getMessage();
+            }
+        } catch (Exception e) {
+        }
+
+        return "";
+    }
+
     public boolean updateBatteryLevel(String escooterId, int batteryLevel) {
         String jsonInputString = String.format("{\"escooterId\": \"%s\", \"batteryLevel\": %d}", escooterId, batteryLevel);
         try {
@@ -40,7 +54,7 @@ public class EscooterRepository {
     }
 
     private List<Escooter> parseGetEscooterListResponse(String response) {
-        GetEscoooterIdListResponse apiResponse = gson.fromJson(response, GetEscoooterIdListResponse.class);
+        UpdateBatteryLevelResponse apiResponse = gson.fromJson(response, UpdateBatteryLevelResponse.class);
 
         if (!apiResponse.isStatus()) {
             System.out.println("Failed to get escooter ID list: " + apiResponse.getMessage());

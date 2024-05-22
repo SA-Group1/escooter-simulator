@@ -1,9 +1,12 @@
 package com.escooter.dto;
 
-public class UpdateBatteryLevelResponse {
-    private boolean status;
+import java.util.List;
+
+public class UpdateBatteryLevelResponse extends DefaultResponse {
     
-    public boolean isStatus() {
-        return status;
+    private List<EscooterId> escooterId;
+
+    public List<EscooterId> getEscooterId() {
+        return escooterId;
     }
 }
