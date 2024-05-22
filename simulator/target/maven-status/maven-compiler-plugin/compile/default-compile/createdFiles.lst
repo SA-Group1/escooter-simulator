@@ -1,0 +1,3 @@
+com\escooter\network\HttpRequest.class
+com\escooter\dto\GetEscoooterIdListResponse.class
+com\escooter\dto\UpdateBatteryLevelResponse.class
