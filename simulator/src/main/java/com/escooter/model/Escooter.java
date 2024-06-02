@@ -1,15 +1,18 @@
 package com.escooter.model;
 
 public class Escooter {
+
     private String id;
     private String status;
     private int batteryLevel;
+    private boolean isMovable;
     private double lat;
     private double lon;
 
     public Escooter(String id) {
         this.id = id;
-        this.batteryLevel = (int)(Math.random() *80) + 21;
+        this.batteryLevel = (int) (Math.random() * 80) + 21;
+        this.isMovable = true;
     }
 
     public String getId() {
@@ -20,11 +23,11 @@ public class Escooter {
         this.id = id;
     }
 
-    public String getStatus(){
+    public String getStatus() {
         return status;
     }
 
-    public void setStatus(String status){
+    public void setStatus(String status) {
         this.status = status;
     }
 
@@ -34,6 +37,14 @@ public class Escooter {
 
     public void setBatteryLevel(int batteryLevel) {
         this.batteryLevel = batteryLevel;
+    }
+
+    public boolean getIsMovable() {
+        return isMovable;
+    }
+
+    public void setIsMovable(boolean isMovable) {
+        this.isMovable = isMovable;
     }
 
     public double getLat() {
