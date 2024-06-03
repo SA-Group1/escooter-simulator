@@ -10,14 +10,14 @@ import com.escooter.dto.GetEscooterListResponse;
 import com.escooter.dto.GetStringResponse;
 import com.escooter.model.Escooter;
 import com.escooter.model.GPS;
-import com.escooter.network.HttpRequest;
+import com.escooter.network.HttpRequestHandler;
 import com.google.gson.Gson;
 
 public class EscooterRepository {
 
-    private static final String BASE_API_URL = "http://36.232.86.13:8080/api/";
+    private static final String BASE_API_URL = "http://36.232.98.26:8080/api/";
     private final Gson gson = new Gson();
-    private final HttpRequest httpRequest = new HttpRequest();
+    private final HttpRequestHandler httpRequest = new HttpRequestHandler();
 
     public List<Escooter> getEscooterList() {
         try {
