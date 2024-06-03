@@ -13,10 +13,10 @@ public class EscooterThread implements Runnable {
     private final List<Escooter> escooters;
     private volatile boolean running = true;
     private final double[][] rectangle = {
-        {120.533207, 23.695134},
-        {120.531437, 23.694810},
-        {120.531716, 23.693326},
-        {120.533513, 23.693606}
+        {23.695134, 120.533207},
+        {23.694810, 120.531437},
+        {23.693326, 120.531716},
+        {23.693606, 120.533513}
     };
 
     private final Map<Escooter, Integer> escooterCorners = new HashMap<>();
