@@ -15,7 +15,7 @@ import com.google.gson.Gson;
 
 public class EscooterRepository {
 
-    private static final String BASE_API_URL = "http://36.232.98.26:8080/api/";
+    private static final String BASE_API_URL = "http://36.232.75.22:8080/api/";
     private final Gson gson = new Gson();
     private final HttpRequestHandler httpRequest = new HttpRequestHandler();
 

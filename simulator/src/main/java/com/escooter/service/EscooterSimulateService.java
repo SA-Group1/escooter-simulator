@@ -58,6 +58,7 @@ public class EscooterSimulateService {
 
     public void stopEscooter(String escooterId) {
         escooterThread.setEscooterMovable(escooterId, false);
+        System.out.println("rest " + escooterId + " GPS.");
     }
 
 }
