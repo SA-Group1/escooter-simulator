@@ -136,7 +136,7 @@ public class EscooterThread implements Runnable {
 
     private double[] calculateNextGps(double[] currentGps, int currentCorner) {
         double[] nextCorner = rectangle[currentCorner];
-        double stepSize = 0.00005;
+        double stepSize = 0.0001;
 
         double nextLatitude = moveTowards(currentGps[0], nextCorner[0], stepSize);
         double nextLongitude = moveTowards(currentGps[1], nextCorner[1], stepSize);
